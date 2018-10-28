@@ -1,26 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import NavBar from './components/NavBar';
+import HomeScreen from './screens/HomeScreen';
+import CardinalScreen from './screens/CardinalScreen';
+import StayCreativeScreen from './screens/StayCreativeScreen';
+import ContactScreen from './screens/ContactScreen';
+
 import './App.css';
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Router>
+        <div className="supreme-treat-app-wrapper">
+          <NavBar linkIsActive />
+          <Route path="/" exact component={HomeScreen} />
+          <Route path="/cardinal-bulletin" exact component={CardinalScreen} />
+          <Route
+            path="/stay-creative-records"
+            exact
+            component={StayCreativeScreen}
+          />
+          <Route path="/contact" exact component={ContactScreen} />
+        </div>
+      </Router>
     );
   }
 }
